@@ -68,6 +68,17 @@ public class BleService implements GattService1, Properties {
 		}
 		dbusConnection.exportObject(this.getPath().toString(), this);
 	}
+
+	protected void unexport(DBusConnection dbusConnection) throws DBusException {
+        for (BleCharacteristic characteristic : characteristics) {
+            for (BleDescriptor descriptor : characteristic.getDescriptors().values()) {
+                descriptor.unexport(dbusConnection);
+            }
+            characteristic.unexport(dbusConnection);
+        }
+        dbusConnection.unExportObject(this.getPath().toString());
+        LOG.debug(String.format("unexport: %s", getPath().toString()));
+    }
 	
 	/**
 	 * Return the Path (dbus class)

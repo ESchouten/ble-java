@@ -39,11 +39,15 @@ creates a BLE Application with one Service and 2 Characteristics.
 
 Before running the example, copy ```example.conf``` to ```/etc/dbus-1/system.d/```
 
-To run from command line: ````sudo ./gradlew runExample````
+Add your user to the bluetooth group
+``sudo usermod -aG bluetooth $USER``
+To run from command line: ````./gradlew runExample````
 
 Press ctrl-c to stop service.
 
 # BlueZ compatibility
+Tested with BlueZ5.50 on Raspbian Buster. No longer needs the --experimental flag 
+
 Tested with BlueZ 5.46 on Raspbian distribution.
 
 **ble-java** usees the GattManager and LEAdvertising that was marked "Experimental" since 5.47. You need to enable the

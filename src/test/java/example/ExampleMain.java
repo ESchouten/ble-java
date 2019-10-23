@@ -21,7 +21,6 @@ public class ExampleMain {
 	}
 	
 	public ExampleMain() throws DBusException, InterruptedException {
-
 		BleApplicationListener appListener = new BleApplicationListener() {
 			@Override
 			public void deviceDisconnected(String path) {
@@ -89,6 +88,11 @@ public class ExampleMain {
 			Thread.sleep(15000);
 		}
 	}
+
+	public BleApplication getApp() {
+		return app;
+	}
+
 
 	public static void main(String[] args) throws DBusException, InterruptedException {
 		ExampleMain example = new ExampleMain();
